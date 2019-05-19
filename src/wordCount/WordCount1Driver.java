@@ -17,7 +17,7 @@ public class WordCount1Driver {
 
 		// Specify data type of output key and value
 		job_conf.setOutputKeyClass(Text.class);
-		job_conf.setOutputValueClass(IntWritable.class);
+		job_conf.setOutputValueClass(DoubleWritable.class);
 
 		// Specify names of Mapper and Reducer Class
 		job_conf.setMapperClass(WordCount1Mapper.class);

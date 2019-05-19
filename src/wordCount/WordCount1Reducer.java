@@ -3,20 +3,22 @@ package wordCount;
 import java.io.IOException;
 import java.util.*;
 
-import org.apache.hadoop.io.IntWritable;
+import org.apache.hadoop.io.DoubleWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapred.*;
 
-public class WordCount1Reducer extends MapReduceBase implements Reducer<Text, IntWritable, Text, IntWritable> {
+public class WordCount1Reducer extends MapReduceBase implements Reducer<Text, DoubleWritable, Text, DoubleWritable> {
 
-	public void reduce(Text t_key, Iterator<IntWritable> values, OutputCollector<Text,IntWritable> output, Reporter reporter) throws IOException {
+	public void reduce(Text t_key, Iterator<DoubleWritable> values, OutputCollector<Text,DoubleWritable> output, Reporter reporter) throws IOException {
 		Text key = t_key;
-		int sum = 0;
+		double minInfo = Double.POSITIVE_INFINITY;
+		System.out.println(values);
 		while (values.hasNext()) {
 			// replace type of value with the actual type of our value
-			IntWritable value = (IntWritable) values.next();
-				sum += value.get();
+			DoubleWritable value = (DoubleWritable) values.next();
+			double info = value.get();
+			minInfo = minInfo < info ? minInfo : info;
 		}
-		output.collect(key, new IntWritable(sum));
+		output.collect(key, new DoubleWritable(minInfo));
 	}
 }
