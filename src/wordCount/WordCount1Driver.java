@@ -5,6 +5,8 @@ import org.apache.hadoop.io.*;
 import org.apache.hadoop.mapred.*;
 
 public class WordCount1Driver {
+	protected static String inputFile = "/home/huongvt/Documents/filebai3.txt";
+	protected static String outputFile = "/home/huongvt/Documents/output" + Math.random();
 	public static void main(String[] args) {
 		JobClient my_client = new JobClient();
 		// Create a configuration object for the job
@@ -30,8 +32,8 @@ public class WordCount1Driver {
 		
 		//FileInputFormat.setInputPaths(job_conf, new Path(args[0]));
 		//FileOutputFormat.setOutputPath(job_conf, new Path(args[1]));
-		FileInputFormat.setInputPaths(job_conf, new Path("/home/huongvt/Documents/file3.txt"));
-		FileOutputFormat.setOutputPath(job_conf, new Path("/home/huongvt/Documents/output2"));
+		FileInputFormat.setInputPaths(job_conf, new Path(inputFile));
+		FileOutputFormat.setOutputPath(job_conf, new Path(outputFile));
 		
 		my_client.setConf(job_conf);
 		try {
