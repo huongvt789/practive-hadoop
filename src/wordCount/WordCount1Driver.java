@@ -5,7 +5,7 @@ import org.apache.hadoop.io.*;
 import org.apache.hadoop.mapred.*;
 
 public class WordCount1Driver {
-	protected static String inputFile = "/home/huongvt/Documents/filebai3.txt";
+	protected static String inputFile = "/home/huongvt/Documents/filebai5.csv";
 	protected static String outputFile = "/home/huongvt/Documents/output" + Math.random();
 	public static void main(String[] args) {
 		JobClient my_client = new JobClient();
