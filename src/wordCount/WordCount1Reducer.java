@@ -11,7 +11,7 @@ public class WordCount1Reducer extends MapReduceBase implements Reducer<Text, Do
 
 	public void reduce(Text t_key, Iterator<DoubleWritable> values, OutputCollector<Text,DoubleWritable> output, Reporter reporter) throws IOException {
 		Text key = t_key;
-		double minInfo = Double.POSITIVE_INFINITY;
+		double minInfo = Double.POSITIVE_INFINITY; //else: Double.Nagative_I...... (tim max)
 		System.out.println(values);
 		while (values.hasNext()) {
 			// replace type of value with the actual type of our value
