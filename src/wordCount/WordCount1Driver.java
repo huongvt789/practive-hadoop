@@ -1,5 +1,16 @@
 package wordCount;
-
+/*
+ * Date Product Price City Company
+ * 2, Tinh gia trung binh cua moi san pham.
+ * 
+ map()
+ Input: offset, val:product, price.
+ Output: list(product, price).
+ 
+ reducer()
+ Input: product, list(price).
+ Output: product, medium(price).
+ */
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.*;
 import org.apache.hadoop.mapred.*;
@@ -17,7 +28,7 @@ public class WordCount1Driver {
 
 		// Specify data type of output key and value
 		job_conf.setOutputKeyClass(Text.class);
-		job_conf.setOutputValueClass(IntWritable.class);
+		job_conf.setOutputValueClass(DoubleWritable.class);
 
 		// Specify names of Mapper and Reducer Class
 		job_conf.setMapperClass(WordCount1Mapper.class);
